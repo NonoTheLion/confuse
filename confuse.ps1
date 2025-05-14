@@ -7,27 +7,32 @@ if (-not (Test-Path -Path $FolderPath)) {
 }
 
 # -------------------- TÉLÉCHARGER L'IMAGE --------------------
-$ImageUrl = "https://wallpaperaccess.com/download/shrek-pc-2291206"  # Remplace par l'URL de l'image que tu veux télécharger
+$ImageUrl = "https://raw.githubusercontent.com/NonoTheLion/confuse/main/data/wallpaper.png"
 $ImagePath = "$FolderPath\wallpaper.jpg"
 
 Invoke-WebRequest -Uri $ImageUrl -OutFile $ImagePath
 
 # -------------------- TÉLÉCHARGER LE CURSEUR --------------------
-$CursorUrl = "https://www.rw-designer.com/cursor-download.php?id=96363"  # Remplace par l'URL de ton fichier curseur
+$CursorUrl = "https://raw.githubusercontent.com/NonoTheLion/confuse/main/data/cursor.cur"
 $CursorPath = "$FolderPath\cursor.cur"
 
 Invoke-WebRequest -Uri $CursorUrl -OutFile $CursorPath
+
+# -------------------- TÉLÉCHARGER LE CURE --------------------
+$CureUrl = "https://raw.githubusercontent.com/NonoTheLion/confuse/main/cure.ps1"
+$CurePath = "$FolderPath\cure.ps1"
+
+Invoke-WebRequest -Uri $CureUrl -OutFile $CurePath
 
 # -------------------- CHANGER LA LANGUE EN HÉBREU --------------------
 $LanguageTag = "he-IL"
 $UserLanguageList = Get-WinUserLanguageList
 $UserLanguageList.Add($LanguageTag)
 Set-WinUserLanguageList $UserLanguageList -Force
-Set-WinUILanguageOverride -Language $LanguageTag
+# Set-WinUILanguageOverride -Language $LanguageTag
 Set-WinUserLanguageList $LanguageTag -Force
 Set-WinSystemLocale $LanguageTag
 Set-Culture $LanguageTag
-Set-WinHomeLocation -GeoId 105  # 105 = Israël
 
 # -------------------- ACTIVER LE NARRATEUR --------------------
 start ms-settings:easeofaccess-narrator

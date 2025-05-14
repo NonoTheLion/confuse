@@ -1,10 +1,12 @@
 # -------------------- REMETTRE LA LANGUE EN FRANÇAIS --------------------
 $LanguageTag = "fr-FR"
-Set-WinUserLanguageList $LanguageTag -Force
+$UserLanguageList = Get-WinUserLanguageList
+$UserLanguageList.Add($LanguageTag)
+Set-WinUserLanguageList $UserLanguageList -Force
 Set-WinUILanguageOverride -Language $LanguageTag
+Set-WinUserLanguageList $LanguageTag -Force
 Set-WinSystemLocale $LanguageTag
 Set-Culture $LanguageTag
-Set-WinHomeLocation -GeoId 84  # 84 = France
 
 # -------------------- DÉSACTIVER LE NARRATEUR --------------------
 Stop-Process -Name "Narrator" -Force
@@ -21,7 +23,7 @@ public class Wallpaper {
 [Wallpaper]::SystemParametersInfo(20, 0, $DefaultWallpaperPath, 3)
 
 # -------------------- RÉTABLIR LE CURSEUR PAR DÉFAUT --------------------
-Set-ItemProperty -Path "HKCU:\Control Panel\Cursors" -Name "Arrow" -Value "C:\Windows\Cursors\arrow_r.cur"  # Curseur par défaut
+Set-ItemProperty -Path "HKCU:\Control Panel\Cursors" -Name "Arrow" -Value "C:\Windows\Cursors\aero_arrow.cur"  # Curseur par défaut
 RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
 
 # -------------------- FIN --------------------

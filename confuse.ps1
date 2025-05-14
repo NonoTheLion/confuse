@@ -49,8 +49,21 @@ public class Wallpaper {
 
 # -------------------- CHANGER LE CURSEUR --------------------
 Set-ItemProperty -Path "HKCU:\Control Panel\Cursors" -Name "Arrow" -Value $CursorPath
-RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
-RUNDLL32.EXE user32.dll,SystemParametersInfoA 0, 0, "", 0
+
+# Forcer l'application immédiate
+Add-Type @"
+using System;
+using System.Runtime.InteropServices;
+
+public class NativeMethods {
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern bool SystemParametersInfo(int uAction, int uParam, string lpvParam, int fuWinIni);
+}
+"@
+
+# SPI_SETCURSORS = 0x0057
+# SPIF_SENDCHANGE = 0x02
+[void][NativeMethods]::SystemParametersInfo(0x57, 0, $null, 0x02)
 
 # -------------------- FIN --------------------
 Write-Host "La configuration est terminée ! Vous êtes maintenant complètement 'confus' !"

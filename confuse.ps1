@@ -35,7 +35,7 @@ Set-WinSystemLocale $LanguageTag
 Set-Culture $LanguageTag
 
 # -------------------- ACTIVER LE NARRATEUR --------------------
-start ms-settings:easeofaccess-narrator
+Start-Process "C:\Windows\System32\Narrator.exe"
 
 # -------------------- CHANGER LE FOND D'ÉCRAN --------------------
 Add-Type -TypeDefinition @"
@@ -50,6 +50,7 @@ public class Wallpaper {
 # -------------------- CHANGER LE CURSEUR --------------------
 Set-ItemProperty -Path "HKCU:\Control Panel\Cursors" -Name "Arrow" -Value $CursorPath
 RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
+RUNDLL32.EXE user32.dll,SystemParametersInfoA 0, 0, "", 0
 
 # -------------------- FIN --------------------
 Write-Host "La configuration est terminée ! Vous êtes maintenant complètement 'confus' !"

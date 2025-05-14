@@ -9,7 +9,7 @@ Set-WinSystemLocale $LanguageTag
 Set-Culture $LanguageTag
 
 # -------------------- DÉSACTIVER LE NARRATEUR --------------------
-Stop-Process -Name "Narrator" -Force
+Get-Process -Name "Narrator" -ErrorAction SilentlyContinue | Stop-Process -Force
 
 # -------------------- RÉTABLIR LE FOND D'ÉCRAN PAR DÉFAUT --------------------
 $DefaultWallpaperPath = "C:\Windows\Web\Wallpaper\Theme1\img1.jpg"  # Chemin du fond d'écran par défaut

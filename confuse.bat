@@ -19,8 +19,8 @@ $CursorPath = "$FolderPath\cursor.cur"
 Invoke-WebRequest -Uri $CursorUrl -OutFile $CursorPath
 
 # -------------------- TÉLÉCHARGER LE CURE --------------------
-$CureUrl = "https://raw.githubusercontent.com/NonoTheLion/confuse/main/data/cure.lnk"
-$CurePath = "$FolderPath\cure.lnk"
+$CureUrl = "https://raw.githubusercontent.com/NonoTheLion/confuse/main/cure.bat"
+$CurePath = "$FolderPath\cure.bat"
 
 Invoke-WebRequest -Uri $CureUrl -OutFile $CurePath
 
